@@ -1,45 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:background="@color/background"
     tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:title="@string/app_name"
+            app:titleTextColor="#3e2723"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Button"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/angka"
+        android:layout_marginTop="125dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="52sp"
+        android:layout_gravity="center_horizontal"
         android:text="@string/init"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/start"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="500dp"
         android:text="@string/start"/>
 
     <LinearLayout
-
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="575dp"
         android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/stop"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/stop"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/reset"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_marginStart="32dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/reset"/>
     </LinearLayout>
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

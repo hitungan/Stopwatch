@@ -1,25 +1,29 @@
 package com.example.stopwatch;
 
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
     private int a;
-    Button start;
-    Button stop;
-    Button reset;
+    MaterialButton start;
+    MaterialButton stop;
+    MaterialButton reset;
     TextView angka;
     StopWatch stopWatch;
     private boolean ok;
     private Handler handler;
+    CoordinatorLayout layout;
 
     public class StopWatch implements Runnable {
         private int time;
@@ -76,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         stop = findViewById(R.id.stop);
         angka = findViewById(R.id.angka);
         reset = findViewById(R.id.reset);
+        layout = findViewById(R.id.layout);
 
         handler = new Handler();
 
@@ -89,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     stopWatch = new StopWatch(a);
                     new Thread(stopWatch).start();
                     ok = false;
+                    Snackbar.make(layout, "Stopwatch Started", Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
@@ -99,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 if (stopWatch != null) {
                     stopWatch.stop();
                     a = stopWatch.getWaktu();
+                    Snackbar.make(layout, "Stopwatch Stopped", Snackbar.LENGTH_SHORT).show();
                 }
                 stopWatch = null;
                 ok = true;
@@ -113,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 if (stopWatch != null) {
                     stopWatch.stop();
                     stopWatch = null;
+                    Snackbar.make(layout, "Stopwatch Reset", Snackbar.LENGTH_SHORT).show();
                 }
                 ok = true;
             }
